@@ -7,7 +7,7 @@
 			<view bindtap="url"  class="item">
 				<view class="item-inner">
 					<view class="img shadow">
-            <navigator url="/pages/tennis/tennis"> 
+            <navigator url="/pages/baseball/baseball"> 
 						<image src="/pictures/1.png" />
           </navigator>
 					</view>
