@@ -1,0 +1,25 @@
+<view class="container">
+  <form bindsubmit="submitRepair">
+    <view class="form-item">
+      <label for="facility">设施名称：</label>
+      <input id="facility" name="facility" placeholder="请输入设施名称" />
+    </view>
+    
+    <view class="form-item">
+      <label for="location">设施位置：</label>
+      <input id="location" name="location" placeholder="请输入设施位置" />
+    </view>
+    
+    <view class="form-item">
+      <label for="description">问题描述：</label>
+      <textarea id="description" name="description" placeholder="请详细描述问题" />
+    </view>
+    
+    <view class="form-item">
+      <label for="contact">联系方式：</label>
+      <input id="contact" name="contact" type="number" placeholder="请输入联系电话" />
+    </view>
+    
+    <button form-type="submit" class="submit-button">提交报修申请</button>
+  </form>
+</view>

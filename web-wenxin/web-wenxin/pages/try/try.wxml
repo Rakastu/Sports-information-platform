@@ -1,0 +1,12 @@
+<view>
+  <!-- 广告图片 -->
+  <image src="/images/advertisement.jpg"></image>
+  
+  <!-- 按钮 -->
+  <button bindtap="goToAppointment">体测预约</button>
+  <button bindtap="goToScore">成绩查询</button>
+  <button bindtap="goToPrescription">运动处方</button>
+  <button bindtap="goToAssessment">运动能力评估</button>
+</view>
+
+

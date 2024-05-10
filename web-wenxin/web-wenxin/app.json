@@ -1,0 +1,63 @@
+{
+  "pages": [
+    "pages/total/total",
+    "pages/mode/mode",
+    "pages/charge/charge",
+    "pages/me/me",
+    "pages/badmin/badmin",
+    "pages/tennis/tennis",
+    "pages/baseball/baseball",
+    "pages/new/new",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/try/try",
+    "pages/fix/fix",
+    "pages/teach/teach",
+    "pages/research/research",
+    "pages/trainning/trainning",
+    "pages/project/project",
+    "pages/volunteer/volunteer",
+    "pages/appointment/appointment",
+    "pages/score/score",
+    "pages/prescription/prescription",
+    "pages/assessment/assessment"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "信息化平台",
+    "navigationBarBackgroundColor": "#2b4b6b"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/total/total",
+        "text": "首页",
+        "iconPath": "/pictures/first-new.png",
+        "selectedIconPath": "/pictures/first-old.png"
+      },
+      {
+        "pagePath": "pages/charge/charge",
+        "text": "付费",
+        "iconPath": "/pictures/second-new.png",
+        "selectedIconPath": "/pictures/second-old.png"
+      },
+      {
+        "pagePath": "pages/fix/fix",
+        "text": "报修",
+        "iconPath": "/pictures/fix1.png",
+        "selectedIconPath": "/pictures/fix1.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "iconPath": "/pictures/third-new.png",
+        "selectedIconPath": "/pictures/third-old.png"
+      }
+    ]
+  }
+}

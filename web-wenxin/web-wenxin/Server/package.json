@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "body-parse": "^0.1.0",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "md5": "^2.3.0",
+    "moment": "^2.30.1",
+    "mysql": "^2.18.1"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cors": "^2.8.5",
+    "Logger": "^0.0.0"
+  }
+}
