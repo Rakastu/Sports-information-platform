@@ -89,9 +89,9 @@ function findReservation(court_name, date, time, callback) {
         }
     });
 }
-// 根据日期获取场地当天的场地预约状态
-function getCourtStatus(date, callback) {
-    pool.query('SELECT * FROM reservations WHERE date = ?', [date], (error, results) => {
+// 根据场地日期获取当天的场地预约状态
+function getCourtStatus(court_name, date, callback) {
+    pool.query('SELECT * FROM reservations WHERE court_name =? AND  date = ? ', [court_name,date], (error, results) => {
         if (error) {
             callback(error); 
         } else {

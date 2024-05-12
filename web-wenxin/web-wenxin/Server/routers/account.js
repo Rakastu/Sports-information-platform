@@ -93,10 +93,11 @@ router.get('/getReservation/:court_name/:date/:time', (req, res) => {
     });
 });
 
-// 根据日期获取场地状态信息
-router.get('/getCourtStatus/:date', (req, res) => {
+// 根据场地和日期获取场地状态信息
+router.get('/getCourtStatus/:court_name/:date', (req, res) => {
+    const court_name =req.params.court_name;
     const date = req.params.date;
-    db.getCourtStatus(date, (error, results) => {
+    db.getCourtStatus(court_name, date, (error, results) => {
         if (error) {
             res.status(500).json({ error: 'Database error' });
         } else {
