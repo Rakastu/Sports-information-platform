@@ -93,6 +93,18 @@ router.get('/getReservation/:court_name/:date/:time', (req, res) => {
     });
 });
 
+// 根据日期获取场地状态信息
+router.get('/getCourtStatus/:date', (req, res) => {
+    const date = req.params.date;
+    db.getCourtStatus(date, (error, results) => {
+        if (error) {
+            res.status(500).json({ error: 'Database error' });
+        } else {
+            res.json(results);
+        }
+    });
+});
+
 
 // 当用户取消预约时，将预约记录删除
 router.delete('/cancelReservation', (req, res) => {

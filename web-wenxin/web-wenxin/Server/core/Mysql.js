@@ -89,6 +89,16 @@ function findReservation(court_name, date, time, callback) {
         }
     });
 }
+// 根据日期获取场地当天的场地预约状态
+function getCourtStatus(date, callback) {
+    pool.query('SELECT * FROM reservations WHERE date = ?', [date], (error, results) => {
+        if (error) {
+            callback(error); 
+        } else {
+            callback(null, results); 
+        }
+    });
+}
 
 //当用户取消预约时，将预约记录删除
 function CancelAppointment(stu_number, court_name, date, time, callback) {
@@ -119,5 +129,6 @@ module.exports = {
     updateVenueStatus,
     Confirmappointment,
     CancelAppointment,
-    findReservation
+    findReservation,
+    getCourtStatus
 };
