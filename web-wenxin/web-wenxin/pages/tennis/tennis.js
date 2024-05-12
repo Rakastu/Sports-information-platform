@@ -15,19 +15,8 @@ Page({
       { id: 3, name: '场地D', status: '空闲' },
     ],
     selectedCourt: null,
-    selectedTime: '请选择时间',
-    timeOptionsArray: (() => {
-      const options = [
-        { time: '11:30', status: '空闲' },
-        { time: '12:30', status: '空闲' },
-        { time: '15:30', status: '空闲' },
-        { time: '16:30', status: '空闲' },
-        { time: '17:30', status: '空闲' },
-        { time: '18:30', status: '空闲' },
-        { time: '19:30', status: '空闲' }
-      ];
-      return options.map(option => `${option.time} - ${option.status}`);
-    })(),
+    selectedTime: '',
+    timeOptionsArray: [],
   },
 
   selectCourt: function (event) {
@@ -35,6 +24,7 @@ Page({
     this.setData({
       selectedCourt: this.data.courts.find(court => court.id === parseInt(courtId)),
     });
+    this.getCourtStatus();
   },
 
   bindTimeChange: function (e) {
@@ -82,7 +72,7 @@ Page({
                 // 预约成功后直接更新状态为已预约
                 const timeOptionsArray = this.data.timeOptionsArray.map(option => {
                   if (option.includes(reservationData.time)) {
-                    return option.replace('空闲', '已预约');
+                    return option.replace('空闲', '已被预约');
                   }
                   return option;
                 });
@@ -126,7 +116,6 @@ Page({
       });
     }
   },
-    // 发送 POST 请求到后端，插入预约记录
 
   switchTab: function (e) {
     const targetPage = e.currentTarget.dataset.page;
@@ -139,8 +128,8 @@ Page({
     this.setData({
       currentDate: selectedDate
     });
-
-    this.updateDates(selectedDate);
+    this.updateDates();
+    this.getCourtStatus();
   },
 
   updateDates: function () {
@@ -156,6 +145,7 @@ Page({
       endDate: tomorrowDate
     });
   },
+
   gettoday:function(){
     const now =  new Date();
     const today = now.toISOString().split('T')[0];
@@ -163,6 +153,46 @@ Page({
       currentDate:today
     })
   },
+
+
+  getCourtStatus: function () {
+    let courtName = '场地A';
+    if(this.data.selectedCourt) {
+      courtName = this.data.selectedCourt.name; 
+    }
+    const date = this.data.currentDate;
+    wx.request({
+      url: `http://localhost:3000/api/getCourtStatus/${courtName}/${date}`, 
+      method: 'GET',
+      success: (res) => {
+        console.log(res.data); 
+        const courtStatus = res.data;
+        const options = [
+          { time: '11:30', status: '空闲' },
+          { time: '12:30', status: '空闲' },
+          { time: '15:30', status: '空闲' },
+          { time: '16:30', status: '空闲' },
+          { time: '17:30', status: '空闲' },
+          { time: '18:30', status: '空闲' },
+          { time: '19:30', status: '空闲' }
+        ];
+        courtStatus.forEach(status => {
+          const index = options.findIndex(option => option.time === status.time);
+          if (index !== -1) {
+            options[index].status = status.status; 
+          }
+        });
+        const timeOptionsArray = options.map(option => `${option.time} - ${option.status}`);
+        this.setData({
+          timeOptionsArray: timeOptionsArray
+        });
+      },
+      fail: (error) => {
+        console.error(error);
+      }
+    });
+  },
+
   onLoad() {
     this.gettoday();
   },
