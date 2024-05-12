@@ -1,6 +1,6 @@
 <view class="text">网球</view>
 <view class="we">
-<picker mode="date" header-text="选择时间"  value="{{currentDate}}" bindchange="bindDateChange">
+  <picker mode="date" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
   <view class="font30">
     <text class="color3">预约时间：</text>
     <text class="color6">{{currentDate}}</text>

@@ -99,7 +99,6 @@ Page({
           });
         }
       });
-
       this.setData({
         selectedCourt: null,
         selectedTime: '请选择时间',
@@ -119,18 +118,12 @@ Page({
     wx.navigateTo({ url: targetPage });
   },
 
-//页面加载时间，调用函数获取今天和明天的日期
-  onLoad(options) {
-    this.updateDates();
-  },
-
-
   bindDateChange: function (e) { 
     const selectedDate = e.detail.value;
     this.setData({
       currentDate: selectedDate
     });
-  
+
     this.updateDates(selectedDate);
   },
 updateDates: function () {
@@ -147,10 +140,9 @@ updateDates: function () {
   });
 },
 
-  
-  
-  
-  
+onLoad(options) {
+  this.updateDates();
+},
 
   /**
    * 生命周期函数--监听页面卸载
