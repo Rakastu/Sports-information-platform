@@ -47,7 +47,6 @@ Page({
         status: '已被预约'
       };
   
-      // 发送 GET 请求到后端，检查是否已被预约
       wx.request({
         url: `http://localhost:3000/api/getReservation/${reservationData.court_name}/${reservationData.date}/${reservationData.time}`,
         method: 'GET',
@@ -59,7 +58,6 @@ Page({
               duration: 2000
             });
           } else {
-            // 发送 POST 请求到后端，插入预约记录
             wx.request({
               url: 'http://localhost:3000/api/makeReservation',
               method: 'POST',
@@ -69,7 +67,6 @@ Page({
               },
               success: (res) => {
                 console.log(res.data);
-                // 预约成功后直接更新状态为已预约
                 const timeOptionsArray = this.data.timeOptionsArray.map(option => {
                   if (option.includes(reservationData.time)) {
                     return option.replace('空闲', '已被预约');
@@ -128,7 +125,6 @@ Page({
     this.setData({
       currentDate: selectedDate
     });
-    this.updateDates();
     this.getCourtStatus();
   },
 
@@ -142,7 +138,8 @@ Page({
   
     this.setData({
       startDate: today,
-      endDate: tomorrowDate
+      endDate: tomorrowDate,
+      currentDate:today
     });
   },
 
@@ -194,7 +191,8 @@ Page({
   },
 
   onLoad() {
-    this.gettoday();
+    //this.gettoday();
+    this.updateDates();
   },
 
   /**
