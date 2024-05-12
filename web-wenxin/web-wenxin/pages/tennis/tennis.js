@@ -113,43 +113,44 @@ Page({
     }
   },
 
-  bindDateChange: function (e) {
-    const selectedDate = e.detail.value;
-    this.setData({
-      currentDate: selectedDate
-    });
-  },
-
   switchTab: function (e) {
     const targetPage = e.currentTarget.dataset.page;
     this.setData({ currentNavItem: targetPage.split('/')[2] });
     wx.navigateTo({ url: targetPage });
   },
 
-
+//页面加载时间，调用函数获取今天和明天的日期
   onLoad(options) {
     this.updateDates();
   },
 
-  updateDates: function () {
-    const now = new Date();
 
-    const currentDate = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`;
-
-    const tomorrow = new Date(now);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const tomorrowDate = `${tomorrow.getFullYear()}-${(tomorrow.getMonth() + 1).toString().padStart(2, '0')}-${tomorrow.getDate().toString().padStart(2, '0')}`;
-
-    const dayAfterTomorrow = new Date(tomorrow);
-    dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 1);
-    const dayAfterTomorrowDate = `${dayAfterTomorrow.getFullYear()}-${(dayAfterTomorrow.getMonth() + 1).toString().padStart(2, '0')}-${dayAfterTomorrow.getDate().toString().padStart(2, '0')}`;
-
+  bindDateChange: function (e) { 
+    const selectedDate = e.detail.value;
     this.setData({
-      currentDate: currentDate,
-      tomorrowDate: tomorrowDate,
-      dayAfterTomorrowDate: dayAfterTomorrowDate
+      currentDate: selectedDate
     });
+  
+    this.updateDates(selectedDate);
   },
+updateDates: function () {
+  const now = new Date();
+  const today = now.toISOString().split('T')[0]; 
+  const tomorrow = new Date(now);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  tomorrow.setHours(23, 59, 59); 
+  const tomorrowDate = tomorrow.toISOString().split('T')[0]; 
+  this.setData({
+    currentDate:today,
+    startDate: today,
+    endDate: tomorrowDate
+  });
+},
+
+  
+  
+  
+  
 
   /**
    * 生命周期函数--监听页面卸载
