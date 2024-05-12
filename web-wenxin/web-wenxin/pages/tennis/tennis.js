@@ -144,28 +144,29 @@ Page({
   },
 
   updateDates: function (selectedDate) {
-    const now = new Date(selectedDate);
+    const now = new Date(); // 如果没有传入选定日期，则使用当前日期
     const today = now.toISOString().split('T')[0];
     const tomorrow = new Date(now);
     tomorrow.setDate(tomorrow.getDate() + 1);
+  
+    // 确保明天的日期仍在同一个月内
+    if (tomorrow.getMonth() !== now.getMonth()) {
+      tomorrow.setMonth(now.getMonth());
+      tomorrow.setDate(1); // 设置为下个月的第一天
+    }
+  
     tomorrow.setHours(23, 59, 59);
     const tomorrowDate = tomorrow.toISOString().split('T')[0];
+  
     this.setData({
-      tomorrowDate: tomorrowDate
+      startDate: today,
+      currentDate: today,
+      endDate: tomorrowDate
     });
   },
-
+  
   onLoad(options) {
-    const now = new Date();
-    const today = now.toISOString().split('T')[0];
-    const tomorrow = new Date(now);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    tomorrow.setHours(23, 59, 59);
-    const tomorrowDate = tomorrow.toISOString().split('T')[0];
-    this.setData({
-      currentDate: today,
-      tomorrowDate: tomorrowDate
-    });
+    this.updateDates();
   },
 
   /**
