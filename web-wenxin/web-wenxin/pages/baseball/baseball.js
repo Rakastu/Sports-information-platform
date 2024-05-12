@@ -9,22 +9,14 @@ Page({
     dayAfterTomorrowDate: '',
     currentTab: 'today',
     courts: [
-      { id: 0, name: '场地A', status: '空闲' },
-      { id: 1, name: '场地B', status: '空闲' },
-      { id: 2, name: '场地C', status: '空闲' },
-      { id: 3, name: '场地D', status: '空闲' },
+      { id: 0, name: '网球A场', status: '空闲' },
+      { id: 1, name: '网球B场', status: '空闲' },
+      { id: 2, name: '网球C场', status: '空闲' },
+      { id: 3, name: '网球D场', status: '空闲' },
     ],
     selectedCourt: null,
-    selectedTime: '请选择时间',
-    timeOptions: (() => {
-      const options = [];
-      for (let hour = 8; hour <= 17; hour++) {
-        if (hour < 12 || hour > 13) {
-          options.push(`${hour.toString().padStart(2, '0')}:00`);
-        }
-      }
-      return options;
-    })(),
+    selectedTime: '',
+    timeOptionsArray: [],
   },
 
   selectCourt: function (event) {
@@ -32,51 +24,65 @@ Page({
     this.setData({
       selectedCourt: this.data.courts.find(court => court.id === parseInt(courtId)),
     });
+    this.getCourtStatus();
   },
 
-  bindTimeChange: function (event) {
-    const selectedIndex = event.detail.value;
+  bindTimeChange: function (e) {
+    const selectedTimeIndex = e.detail.value;
+    const selectedTimeData = this.data.timeOptionsArray[selectedTimeIndex];
+    const selectedTime = selectedTimeData.split(' - ')[0]; // 提取时间部分
     this.setData({
-      selectedTime: this.data.timeOptions[selectedIndex],
+      selectedTimeIndex: selectedTimeIndex,
+      selectedTime: selectedTime
     });
   },
 
   submitReservation: function () {
     if (this.data.selectedCourt && this.data.selectedTime !== '请选择时间' && this.data.currentDate !== '') {
-      // 构造预约信息对象
       const reservationData = {
         stu_number: '2019001',
         court_name: this.data.selectedCourt.name,
         date: this.data.currentDate,
         time: this.data.selectedTime,
-        status: '已被预约' // 假设初始状态为待确认
+        status: '已被预约'
       };
-      // 发送 GET 请求到后端，检查是否已被预约
+  
       wx.request({
         url: `http://localhost:3000/api/getReservation/${reservationData.court_name}/${reservationData.date}/${reservationData.time}`,
         method: 'GET',
         success: (res) => {
-         // console.log(res.data)
-          if (res.data.length!=0) {
+          if (res.data.length !== 0) {
             wx.showToast({
               title: '该时间段已被预约',
               icon: 'none',
               duration: 2000
             });
-          }else {
+          } else {
             wx.request({
               url: 'http://localhost:3000/api/makeReservation',
               method: 'POST',
-              data: JSON.stringify(reservationData),
+              data: reservationData,
               header: {
                 'content-type': 'application/json'
               },
               success: (res) => {
                 console.log(res.data);
+                const timeOptionsArray = this.data.timeOptionsArray.map(option => {
+                  if (option.includes(reservationData.time)) {
+                    return option.replace('空闲', '已被预约');
+                  }
+                  return option;
+                });
                 wx.showToast({
                   title: '预约成功',
                   icon: 'success',
                   duration: 2000
+                });
+  
+                this.setData({
+                  selectedCourt: null,
+                  selectedTime: '请选择时间',
+                  timeOptionsArray: timeOptionsArray
                 });
               },
               fail: (err) => {
@@ -99,10 +105,6 @@ Page({
           });
         }
       });
-      this.setData({
-        selectedCourt: null,
-        selectedTime: '请选择时间',
-      });
     } else {
       wx.showToast({
         title: '请选择场地、日期和时间',
@@ -114,35 +116,109 @@ Page({
 
   switchTab: function (e) {
     const targetPage = e.currentTarget.dataset.page;
-    this.setData({ currentNavItem: targetPage.split('/')[2] });
+    this.setData({ currentTab: targetPage.split('/')[2] });
     wx.navigateTo({ url: targetPage });
   },
 
-  bindDateChange: function (e) { 
+  bindDateChange: function (e) {
     const selectedDate = e.detail.value;
     this.setData({
       currentDate: selectedDate
     });
-
-    this.updateDates(selectedDate);
+    this.getCourtStatus();
   },
-updateDates: function () {
-  const now = new Date();
-  const today = now.toISOString().split('T')[0]; 
-  const tomorrow = new Date(now);
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  tomorrow.setHours(23, 59, 59); 
-  const tomorrowDate = tomorrow.toISOString().split('T')[0]; 
-  this.setData({
-    currentDate:today,
-    startDate: today,
-    endDate: tomorrowDate
-  });
-},
 
-onLoad(options) {
-  this.updateDates();
-},
+  updateDates: function () {
+    const now =  new Date(); 
+    const today = now.toISOString().split('T')[0];
+    const tomorrow = new Date(now);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setHours(23, 59, 59);
+    const tomorrowDate = tomorrow.toISOString().split('T')[0];
+  
+    this.setData({
+      startDate: today,
+      endDate: tomorrowDate,
+      currentDate:today
+    });
+  },
+
+  gettoday:function(){
+    const now =  new Date();
+    const today = now.toISOString().split('T')[0];
+    this.setData({
+      currentDate:today
+    })
+  },
+
+
+  getCourtStatus: function () {
+    let courtName = '场地A';
+    if(this.data.selectedCourt) {
+      courtName = this.data.selectedCourt.name; 
+    }
+    const date = this.data.currentDate;
+    wx.request({
+      url: `http://localhost:3000/api/getCourtStatus/${courtName}/${date}`, 
+      method: 'GET',
+      success: (res) => {
+        console.log(res.data); 
+        const courtStatus = res.data;
+        const options = [
+          { time: '11:30', status: '空闲' },
+          { time: '12:30', status: '空闲' },
+          { time: '15:30', status: '空闲' },
+          { time: '16:30', status: '空闲' },
+          { time: '17:30', status: '空闲' },
+          { time: '18:30', status: '空闲' },
+          { time: '19:30', status: '空闲' }
+        ];
+        courtStatus.forEach(status => {
+          const index = options.findIndex(option => option.time === status.time);
+          if (index !== -1) {
+            options[index].status = status.status; 
+          }
+        });
+
+      const alltimeisfull = options.every(option => option.status !== '空闲');
+      if (alltimeisfull) {
+        const courtName = this.data.selectedCourt.name;
+        const index = this.data.courts.findIndex(court => court.name === courtName);
+        if (index !== -1) {
+          const updatedCourts = [...this.data.courts];
+          updatedCourts[index].status = '场地已约满';
+          this.setData({
+            courts: updatedCourts
+          });
+        }
+      } else {
+        const courtName = this.data.selectedCourt.name;
+        const index = this.data.courts.findIndex(court => court.name === courtName);
+        if (index !== -1) {
+          const updatedCourts = [...this.data.courts];
+          updatedCourts[index].status = '空闲';
+          this.setData({
+            courts: updatedCourts
+          });
+        }
+      }
+      
+      // 更新页面状态
+      const timeOptionsArray = options.map(option => `${option.time} - ${option.status}`);
+      this.setData({
+        timeOptionsArray: timeOptionsArray
+      });
+      },
+      fail: (error) => {
+        console.error(error);
+      }
+    });
+  },
+
+  onLoad() {
+    //this.gettoday();
+    this.updateDates();
+  },
 
   /**
    * 生命周期函数--监听页面卸载

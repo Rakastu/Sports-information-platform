@@ -9,10 +9,10 @@ Page({
     dayAfterTomorrowDate: '',
     currentTab: 'today',
     courts: [
-      { id: 0, name: '场地A', status: '空闲' },
-      { id: 1, name: '场地B', status: '空闲' },
-      { id: 2, name: '场地C', status: '空闲' },
-      { id: 3, name: '场地D', status: '空闲' },
+      { id: 0, name: '乒乓球A场', status: '空闲' },
+      { id: 1, name: '乒乓球B场', status: '空闲' },
+      { id: 2, name: '乒乓球C场', status: '空闲' },
+      { id: 3, name: '乒乓球D场', status: '空闲' },
     ],
     selectedCourt: null,
     selectedTime: '',
@@ -179,10 +179,35 @@ Page({
             options[index].status = status.status; 
           }
         });
-        const timeOptionsArray = options.map(option => `${option.time} - ${option.status}`);
-        this.setData({
-          timeOptionsArray: timeOptionsArray
-        });
+
+      const alltimeisfull = options.every(option => option.status !== '空闲');
+      if (alltimeisfull) {
+        const courtName = this.data.selectedCourt.name;
+        const index = this.data.courts.findIndex(court => court.name === courtName);
+        if (index !== -1) {
+          const updatedCourts = [...this.data.courts];
+          updatedCourts[index].status = '场地已约满';
+          this.setData({
+            courts: updatedCourts
+          });
+        }
+      } else {
+        const courtName = this.data.selectedCourt.name;
+        const index = this.data.courts.findIndex(court => court.name === courtName);
+        if (index !== -1) {
+          const updatedCourts = [...this.data.courts];
+          updatedCourts[index].status = '空闲';
+          this.setData({
+            courts: updatedCourts
+          });
+        }
+      }
+      
+      // 更新页面状态
+      const timeOptionsArray = options.map(option => `${option.time} - ${option.status}`);
+      this.setData({
+        timeOptionsArray: timeOptionsArray
+      });
       },
       fail: (error) => {
         console.error(error);

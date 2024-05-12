@@ -19,7 +19,7 @@
 
   <view wx:if="{{selectedCourt !== null}}" class="reservation-section">
     <view>您选择了场地：{{selectedCourt.name}}</view>
-    <picker mode="selector" range="{{timeOptions}}" bindchange="bindTimeChange" value="{{timeOptions.indexOf(selectedTime)}}">
+ <picker mode="selector" range="{{timeOptionsArray}}" bindchange="bindTimeChange" value="{{selectedTimeIndex}}">
     <view class="picker">开始时间：{{selectedTime}}</view>
     <view>时长1小时</view>
   </picker>
