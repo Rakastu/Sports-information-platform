@@ -114,8 +114,42 @@ function CancelAppointment(stu_number, court_name, date, time, callback) {
     );
 }
 
+//根据学号获取学生的体测的信息
+function getstuAlllscores(stu_id, callback) {
+    pool.query('SELECT * FROM studentfitness WHERE stu_id = ?', [stu_id], (error, results) => {
+        if (error) return callback(error);
+        callback(null, results); 
+    });
+}
+//根据学号，项目名称，项目成绩，添加体测预的成绩
+function addstuscore(stu_id, test_name, grade, callback) {
+    pool.query('INSERT INTO studentfitness stu_id, test_name, grade) VALUES (?, ?, ?)', [stu_id, test_name, grade], (error, results) => {
+        if (error) return callback(error);
+        callback(null, results); 
+    });
+}
 
-
+//根据学号获取体制测试预约信息
+function getstuentfitnessappointment(stu_id, callback) {
+    pool.query('SELECT * FROM astuentfitnessappointment WHERE stu_id = ?', [stu_id], (error, results) => {
+        if (error) return callback(error);
+        callback(null, results); 
+    });
+}
+//根据学号，项目名称,日期，时间添加学生体测预约信息(状态信息为空)
+function addstuentfitnessappointment(stu_id, test_name, date, time, callback) {
+    pool.query('INSERT INTO astuentfitnessappointment stu_id, test_name, date, time) VALUES (?, ?, ?, ?)', [stu_id, test_name, date, time], (error, results) => {
+        if (error) return callback(error);
+        callback(null, results); 
+    });
+}
+//根据学号，项目名称,日期，时间删除学生体测预约信息
+function delstuentfitnessappointment(stu_id, test_name, date, time, callback) {
+    pool.query('DELETE FROM astuentfitnessappointment WHERE stu_id = ? AND test_name = ? AND date = ? AND time = ?', [stu_id, test_name, date, time], (error, results) => {
+        if (error) return callback(error);
+        callback(null, results); 
+    });
+}
 
 //导出相关的方法
 module.exports = {
@@ -130,5 +164,10 @@ module.exports = {
     Confirmappointment,
     CancelAppointment,
     findReservation,
-    getCourtStatus
+    getCourtStatus,
+    getstuAlllscores,
+    addstuscore,
+    getstuentfitnessappointment,
+    addstuentfitnessappointment,
+    delstuentfitnessappointment
 };

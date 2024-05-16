@@ -117,4 +117,55 @@ router.delete('/cancelReservation', (req, res) => {
     
 });
 
+//根据学号，项目名称，项目成绩，添加指定学生的体测的成绩
+router.post('/addStuRecord', (req, res) => {
+    const stu_id = req.body.stu_id;
+    const test_name = req.body.test_name;
+    const grade = req.body.grade;
+    db.addstuscore(stu_id, test_name, grade, (error, results) => {
+        if (error) return res.status(500).json({ error: 'Database error' }); // 如果出现错误，返回500错误响应
+        res.json({ message: 'add successfully' }); // 如果成功，返回成功消息
+    });
+ });
+
+ //根据学号获取学生的体测成绩的信息
+router.get('/getStuRecord/:stu_id', (req, res) => {
+    const stu_id = req.params.stu_id;
+    db.getstuscore(stu_id, (error, results) => {
+        if (error) return res.status(500).json({ error: 'Database error' }); // 如果出现错误，返回500错误响应
+        res.json(results); // 如果成功，返回成功消息
+    });
+});
+
+//根据学号获取体制测试预约信息
+router.get('/getStuAppointment/:stu_id', (req, res) => {
+    const stu_id = req.params.stu_id;
+    db.getAthleteAppointment(stu_id, (error, results) => {
+        if (error) return res.status(500).json({ error: 'Database error' }); // 如果出现错误，返回500错误响应
+        res.json(results); // 如果成功，返回成功消息
+    });
+});
+//根据学号，项目名称,日期，时间添加学生体测预约信息(状态信息为空)
+router.post('/addStuAppointment', (req, res) => {
+    const stu_id = req.body.stu_id;
+    const test_name = req.body.test_name;
+    const date = req.body.date;
+    const time = req.body.time;
+    db.addAthleteAppointment(stu_id, test_name, date, time, (error, results) => {
+        if (error) return res.status(500).json({ error: 'Database error' }); // 如果出现错误，返回500错误响应
+        res.json({ message: 'add successfully' }); // 如果成功，返回成功消息
+    });
+ });
+//根据学号，项目名称,日期，时间删除学生体测预约信息
+router.delete('/delStuAppointment', (req, res) => {
+    const stu_id = req.body.stu_id;
+    const test_name = req.body.test_name;
+    const date = req.body.date;
+    const time = req.body.time;
+    db.delAthleteAppointment(stu_id, test_name, date, time, (error, results) => {
+        if (error) return res.status(500).json({ error: 'Database error' }); // 如果出现错误，返回500错误响应
+        res.json({ message: 'delete successfully' }); // 如果成功，返回成功消息
+    });
+});
+
 module.exports = router;
