@@ -1,10 +1,12 @@
 <view>
-  <button bindtap="reserveTest">一千米</button>
-  <button bindtap="reserveTest">肺活量</button>
-  <button bindtap="reserveTest">身高</button>
-  <button bindtap="reserveTest">体重</button>
-  <button bindtap="reserveTest">体前屈</button>
-  <button bindtap="reserveTest">立定跳远</button>
-  <button bindtap="reserveTest">50米</button>
-  <!-- 其他体测项目按钮 -->
+
+
+  <!-- 体测项目按钮 -->
+  <button bindtap="navigateToAssessment">一千米</button>
+  <button bindtap="navigateToAssessment">肺活量</button>
+  <button bindtap="navigateToAssessment">身高</button>
+  <button bindtap="navigateToAssessment">体重</button>
+  <button bindtap="navigateToAssessment">体前屈</button>
+  <button bindtap="navigateToAssessment">立定跳远</button>
+  <button bindtap="navigateToAssessment">50米</button>
 </view>

@@ -1,1 +1,26 @@
-/* pages/trainning/trainning.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.background {
+  background-size: cover;
+  background-position: center;
+  /* 其他样式 */
+}
+.module {
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: #eee;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.module:hover {
+  background-color: #ccc;
+}

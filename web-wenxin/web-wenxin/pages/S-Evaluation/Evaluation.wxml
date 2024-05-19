@@ -1,0 +1,39 @@
+<view class="main">
+  <view class="title">
+    教师评价与考核
+  </view>
+  
+  <view class="XX"></view>
+  <view class="text">此页面待连接数据库</view>
+
+
+  <view class="box1">
+    <input class="check" placeholder="请输入工号" />
+  </view>
+  <view class="XX"></view>
+  <view class="h2">教师的授课质量：</view>
+  <view class="choose">
+  <radio-group bindchange="radioChange">
+    <label wx:for="{{items}}" wx:key="index" class="radio" >
+      <radio value="{{item.value}}" checked="{{item.checked}}" />
+      {{item.name}}
+    </label>
+  </radio-group>
+  </view>
+
+  <view class="XX"></view>
+  <view class="h2">教师的课堂活跃度：</view>
+  <view class="choose">
+  <radio-group bindchange="radioChange">
+    <label wx:for="{{items}}" wx:key="index" class="radio" >
+      <radio value="{{item.value}}" checked="{{item.checked}}" />
+      {{item.name}}
+    </label>
+  </radio-group>
+  </view>
+ 
+
+   <button class="button" bindtap="handleTap">提交</button>
+  <view class="XX"></view>
+  <view class="text">- 智慧运动 - 健康随行 -</view>
+</view>

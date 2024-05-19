@@ -1,0 +1,29 @@
+<view class="main">
+
+<view class="title">
+  教师信息录入
+</view>
+<view class="XX"></view>
+<view class="text">此页面待连接数据库</view>
+<view class="text">-输入工号，姓名，与任教课程以录入信息-</view>
+
+<view class="BAG">
+<view class="box1">
+  <input bindinput="inputTid" class="check" placeholder="请输入工号" />
+</view>
+
+<view class="box1">
+  <input bindinput="inputTname" class="check" placeholder="请输入姓名" />
+</view>
+
+<view class="box1">
+  <input bindinput="inputCname" class="check" placeholder="请输入任教课程" />
+</view>
+<view class="box1">
+  <input bindinput="inputCid" class="check" placeholder="请输入课程编号" />
+</view>
+ <button class="button" bindtap="handleTap">录入</button>
+</view>
+<view class="XX"></view>
+<view class="text">- 智慧运动 - 健康随行 -</view>
+</view>

@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="activity-header">
+    <text class="activity-name">{{activity.name}}</text>
+    <text class="activity-time">{{activity.time}}</text>
+    <text class="activity-location">{{activity.location}}</text>
+    <text class="activity-organizer">组织者：{{activity.organizer}}</text>
+    <view class="activity-status {{activity.status === '报名中' ? 'open' : 'closed'}}">{{activity.status}}</view>
+  </view>
+  <view class="participant-list">
+    <text class="title">参与者名单</text>
+    <block wx:for="{{participants}}" wx:key="index">
+      <text class="participant">{{index + 1}}. {{item}}</text>
+    </block>
+  </view>
+  <button class="signup-btn" bindtap="signup" wx:if="{{activity.status === '报名中'}}">报名参加</button>
+</view>
+

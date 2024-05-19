@@ -1,66 +1,55 @@
-// pages/assessment/assessment.js
+// index.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    startDate: '',
+    startTime: '',
+    timeRange: ['1', '2', '3', '4', '5'], // 以小时为单位的运动时长
+    durationIndex: 0, // 默认选择第一个小时
+    isReserved: false, // 是否已经预约成功
+    today: '', // 当前日期
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onLoad: function() {
+    this.setToday();
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  setToday: function() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1 < 10 ? '0' + (today.getMonth() + 1) : today.getMonth() + 1;
+    const day = today.getDate() < 10 ? '0' + today.getDate() : today.getDate();
+    const todayStr = `${year}-${month}-${day}`;
+    this.setData({
+      today: todayStr,
+      startDate: todayStr
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  bindDateChange: function(e) {
+    this.setData({
+      startDate: e.detail.value
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
+  bindTimeChange: function(e) {
+    this.setData({
+      startTime: e.detail.value
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
+  bindDurationChange: function(e) {
+    this.setData({
+      durationIndex: e.detail.value
+    });
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  confirmReservation: function() {
+    // 模拟提交预约请求
+    // 这里可以通过 wx.request() 发送预约请求到服务器
+    // 如果请求成功，将 isReserved 置为 true，显示预约成功消息
+    // 如果请求失败，可以显示一个错误提示或者重新尝试预约
+    this.setData({
+      isReserved: true
+    });
   }
-})
+});

@@ -1,2 +1,13 @@
 <!--pages/trainning/trainning.wxml-->
-<text>pages/trainning/trainning.wxml</text>
+<!-- index.wxml -->
+<view class="page">
+  <view class="background">
+    <!-- 页面内容 -->
+    <view class="container">
+      <view class="module" bindtap="navigateToTeamIntroduction">运动队简介</view>
+      <view class="module" bindtap="navigateToTraining">训练模块</view>
+      <view class="module" bindtap="navigateToMatches">比赛页面</view>
+      <view class="module" bindtap="navigateToResults">参赛成绩</view>
+    </view>
+  </view>
+</view>

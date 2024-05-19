@@ -1,2 +1,29 @@
-<!--pages/assessment/assessment.wxml-->
-<text>pages/assessment/assessment.wxml</text>
+<!-- index.wxml -->
+<view class="container">
+  <view class="input-container">
+    <text>选择开始日期：</text>
+    <picker mode="date" value="{{startDate}}" start="{{today}}" bindchange="bindDateChange">
+      <view class="picker">{{startDate}}</view>
+    </picker>
+  </view>
+
+  <view class="input-container">
+    <text>选择开始时间：</text>
+    <picker mode="time" value="{{startTime}}" bindchange="bindTimeChange">
+      <view class="picker">{{startTime}}</view>
+    </picker>
+  </view>
+
+  <view class="input-container">
+    <text>选择运动时长：</text>
+    <picker mode="selector" range="{{timeRange}}" value="{{durationIndex}}" bindchange="bindDurationChange">
+      <view class="picker">{{timeRange[durationIndex]}} 小时</view>
+    </picker>
+  </view>
+
+  <button bindtap="confirmReservation">确定</button>
+
+  <view wx:if="{{isReserved}}" class="success-message">
+    预约成功！
+  </view>
+</view>

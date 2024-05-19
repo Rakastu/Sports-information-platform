@@ -1,2 +1,44 @@
-<!--pages/teach/teach.wxml-->
-<text>pages/teach/teach.wxml</text>
+<view class="main">
+  <view class="title">
+    体育教学管理(测试)
+  </view>
+  
+  <view class="XX"></view>
+  
+  <view class="box">
+    <image class="img1" src="/pictures/1.png"></image>
+    <navigator class="imgtext" url="/pages/test1/test1">教师管理</navigator>
+  </view>
+  
+  <view class="XX"></view>
+  
+  <view class="box">
+    <image class="img1" src="/pictures/5.png"></image>
+    <navigator class="imgtext" url="/pages/test2/test2">教研管理</navigator>
+  </view>
+
+  <view class="XX"></view>
+  
+  <view class="box">
+    <image class="img1" src="/pictures/4.png"></image>
+    <navigator class="imgtext" url="/pages/test3/test3">体育课程开设</navigator>
+  </view>
+
+  <view class="XX"></view>
+
+  <view class="box">
+    <image class="img1" src="/pictures/2.png"></image>
+    <navigator class="imgtext" url="/pages/test4/test4">体育成绩管理</navigator>
+  </view>
+
+  <view class="XX"></view>
+
+  <view class="box">
+    <image class="img1" src="/pictures/3.png"></image>
+    <navigator class="imgtext" url="/pages/test5/test5">教学资源</navigator>
+  </view>
+
+  <view class="XX"></view>
+  <view class="text">- 智慧运动 - 健康随行 -</view>
+  <image class="img2" src="/pictures/glass1.jpg"></image>
+</view>

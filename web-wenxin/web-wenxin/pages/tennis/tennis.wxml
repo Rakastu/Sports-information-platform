@@ -1,13 +1,15 @@
-<view class="text">乒乓球</view>
-<view class="we">
-  <picker mode="date" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
-  <view class="font30">
-    <text class="color3">预约时间：</text>
-    <text class="color6">{{currentDate}}</text>
-    <text class="timeIcon">▼</text>
-  </view>
-</picker>
+<view class="title">乒乓球馆预约</view>
+<view class="picker-container">
+  <picker mode="date" value="{{currentDate}}" bindchange="bindDateChange">
+    <view class="date-picker">
+      <text class="date-label">预约日期：</text>
+      <text class="date-value">{{currentDate}}</text>
+      <text class="arrow-icon">▼</text>
+    </view>
+  </picker>
 </view>
+
+
 
 
 <view class="container">
@@ -15,16 +17,15 @@
     <text>{{item.name}} - 状态：{{item.status}}</text>
   </view>
 
-
   <view wx:if="{{selectedCourt !== null}}" class="reservation-section">
-  <view>您选择了场地：{{selectedCourt.name}}</view>
-  <picker mode="selector" range="{{timeOptionsArray}}" bindchange="bindTimeChange" value="{{selectedTimeIndex}}">
+    <view>您选择了场地：{{selectedCourt.name}}</view>
+    <picker mode="selector" range="{{timeOptions}}" bindchange="bindTimeChange" value="{{timeOptions.indexOf(selectedTime)}}">
     <view class="picker">开始时间：{{selectedTime}}</view>
     <view>时长1小时</view>
   </picker>
-  <button bindtap="submitReservation" class="submit-button">提交预约</button>
+    <button bindtap="submitReservation" class="submit-button">提交预约</button>
+  </view>
 </view>
 
-</view>
 
 

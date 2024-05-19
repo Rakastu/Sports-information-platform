@@ -1,0 +1,35 @@
+<view class="main">
+  <view class="title">
+    教师管理
+  </view>
+  
+  <view class="XX"></view>
+    <view class="h2">个人信息</view>
+  <view>
+    <view class="imgtext">姓名：王老师</view>
+    <view class="imgtext">工号：1234567</view>
+  </view>
+
+  <view class="XX"></view>
+  <view class="h2">功能模块</view>
+<view class="BAG">  
+<navigator url="/pages/S-Information-entry/Information-entry">
+  <view class="box1">
+    <view class="h1">教师信息录入</view>
+  </view>
+</navigator>
+<navigator url="/pages/S-Course-scheduling/Course-scheduling">
+  <view class="box1">
+    <view class="h1">教师排班管理</view>
+  </view>
+</navigator>
+<navigator url="/pages/S-Evaluation/Evaluation">
+  <view class="box1">
+    <view class="h1">教师评价与考核</view>
+  </view>
+</navigator>
+</view>
+
+  <view class="XX"></view>
+  <view class="text">- 智慧运动 - 健康随行 -</view>
+</view>

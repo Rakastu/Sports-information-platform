@@ -1,6 +1,6 @@
 <view class="text">羽毛球</view>
 <view class="we">
-  <picker mode="date" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
+<picker mode="date" header-text="选择时间"  value="{{currentDate}}" bindchange="bindDateChange">
   <view class="font30">
     <text class="color3">预约时间：</text>
     <text class="color6">{{currentDate}}</text>
@@ -18,7 +18,7 @@
 
   <view wx:if="{{selectedCourt !== null}}" class="reservation-section">
     <view>您选择了场地：{{selectedCourt.name}}</view>
-  <picker mode="selector" range="{{timeOptionsArray}}" bindchange="bindTimeChange" value="{{selectedTimeIndex}}">
+    <picker mode="selector" range="{{timeOptions}}" bindchange="bindTimeChange" value="{{timeOptions.indexOf(selectedTime)}}">
     <view class="picker">开始时间：{{selectedTime}}</view>
     <view>时长1小时</view>
   </picker>

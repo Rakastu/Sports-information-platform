@@ -1,0 +1,12 @@
+<view class="main">
+  <view class="title">
+    教学成果展示
+  </view>
+  
+  <view class="XX"></view>
+  <image class="img2" src="/pictures/RD1.jpg"></image>
+  <view class="XX"></view>
+  <image class="img2" src="/pictures/RD2.jpg"></image>
+  <view class="XX"></view>
+  <view class="text">- 智慧运动 - 健康随行 -</view>
+</view>

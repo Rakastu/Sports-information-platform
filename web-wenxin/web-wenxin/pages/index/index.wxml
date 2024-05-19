@@ -1,27 +1,15 @@
-<!--index.wxml-->
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    <view class="userinfo">
-      <block wx:if="{{canIUseNicknameComp && !hasUserInfo}}">
-        <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-          <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
-        </button>
-        <view class="nickname-wrapper">
-          <text class="nickname-label">昵称</text>
-          <input type="nickname" class="nickname-input" placeholder="请输入昵称" bind:change="onInputChange" />
-        </view>
-      </block>
-      <block wx:elif="{{!hasUserInfo}}">
-        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-        <view wx:else> 请使用2.10.4及以上版本基础库 </view>
-      </block>
-      <block wx:else>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
-    </view>
-    <view class="usermotto">
-      <text class="user-motto">{{motto}}</text>
-    </view>
+<!-- index.wxml -->
+<view class="container">
+  <button class="btn" bindtap="checkAppointments">查看我的预约</button>
+  <view class="appointments">
+    <block wx:if="{{appointments.length > 0}}">
+      <view class="title">我的预约信息</view>
+      <view wx:for="{{appointments}}" wx:key="index" class="appointment">
+        <view>日期：{{item.date}}，时间：{{item.time}}</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="empty">暂无预约信息</view>
+    </block>
   </view>
-</scroll-view>
+</view>

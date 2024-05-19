@@ -1,30 +1,30 @@
 // pages/try/try.js
 Page({
-    goToAppointment: function() {
-      wx.navigateTo({
-        url: '/pages/appointment/appointment'
-      })
-    },
-    goToScore: function() {
-      wx.navigateTo({
-        url: '/pages/score/score'
-      })
-    },
-    goToPrescription: function() {
-      wx.navigateTo({
-        url: '/pages/prescription/prescription'
-      })
-    },
-    goToAssessment: function() {
-      wx.navigateTo({
-        url: '/pages/assessment/assessment'
-      })
-    },
+  goToAppointment: function() {
+    wx.navigateTo({
+      url: '/pages/appointment/appointment'
+    })
+  },
+  goToScore: function() {
+    wx.navigateTo({
+      url: '/pages/score/score'
+    })
+  },
+  goToPrescription: function() {
+    wx.navigateTo({
+      url: '/pages/prescription/prescription'
+    })
+  },
+  goToAssessment: function() {
+    wx.navigateTo({
+      url: '/pages/assessment/assessment'
+    })
+  },
   /**
    * 页面的初始数据
    */
   data: {
-
+    pageTitle: "学生体质测试" // 添加标题
   },
 
   /**
@@ -33,7 +33,6 @@ Page({
   onLoad(options) {
 
   },
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成

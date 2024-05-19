@@ -10,9 +10,10 @@ Page({
       {text: '教改科研管理', link: '/pages/research/research'},
       {text: '学生体质测试', link: '/pages/try/try' },
       {text: '运动训练管理', link: '/pages/trainning/trainning' },
-      {text: '群体活动管理', link: '/pages/project/project' },
+      {text: '群体活动管理', link: '/pages/activityList/activityList' },
       {text: '运动场馆管理', link: '/pages/mode/mode' },
       {text: '体育自愿者管理', link: '/pages/volunteer/volunteer' },
+      {text: '教师管理员',link: '/pages/teacherPage/teacherPage.js'}
     ],
   },
 

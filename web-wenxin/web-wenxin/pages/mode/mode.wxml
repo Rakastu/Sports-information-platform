@@ -8,7 +8,7 @@
 				<view class="item-inner">
 					<view class="img shadow">
             <navigator url="/pages/baseball/baseball"> 
-						<image src="/pictures/1.png" />
+						<image src="/pictures/baseball.png" />
           </navigator>
 					</view>
 					<view class="title">网球</view>
@@ -18,7 +18,7 @@
 				<view class="item-inner">
 					<view class="img shadow">
             <navigator url="/pages/badmin/badmin"> 
-						<image src="/pictures/2.png" />
+						<image src="/pictures/badmin.png" />
           </navigator>
 					</view>
 					<view class="title">羽毛球</view>
@@ -28,7 +28,7 @@
 				<view class="item-inner">
 					<view class="img shadow">
             <navigator url="/pages/tennis/tennis"> 
-						<image src="/pictures/3.png" />
+						<image src="/pictures/tennis.png" />
           </navigator>
 					</view>
 					<view class="title">乒乓球</view>
