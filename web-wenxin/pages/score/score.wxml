@@ -1,4 +1,0 @@
-<view>
-  <text>{{username}}你的成绩为：</text>
-  <!-- 展示成绩 -->
-</view>

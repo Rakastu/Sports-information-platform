@@ -1,6 +1,0 @@
-<view class="container">
-  <!-- 页面内容 -->
-  <view class="back-btn" bindtap="navigateBack">
-    <image src="https://th.bing.com/th/id/R.6c9316f511b1db2e77c1f461368a62f6?rik=aHcOqYaBKo3Jmg&riu=http%3a%2f%2fpic.616pic.com%2fys_img%2f00%2f39%2f34%2f5a6R6fJIwb.jpg&ehk=w1frb5iwsP7eGA27QwuGIUzDJ9lUrwOzCMiwagFC1MM%3d&risl=&pid=ImgRaw&r=0" class="back-arrow"></image>
-  </view>
-</view>
