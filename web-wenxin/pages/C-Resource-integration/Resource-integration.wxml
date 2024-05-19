@@ -1,0 +1,20 @@
+<view class="main">
+
+<view class="title">
+  课程资源整合
+</view>
+<view class="XX"></view>
+<view class="text">此页面待连接数据库</view>
+<view class="text">-该页面用于展示资源-</view>
+
+<view class="BAG">
+<view class="box1">
+  <input  class="check" placeholder="请输入课程号" />
+</view>
+<view class="box1">
+  <input  class="check" placeholder="请输入课程号" />
+</view>
+</view>
+<view class="XX"></view>
+<view class="text">- 智慧运动 - 健康随行 -</view>
+</view>

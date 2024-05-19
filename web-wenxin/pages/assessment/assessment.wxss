@@ -1,0 +1,13 @@
+/* index.wxss */
+.container {
+  padding: 20px;
+}
+
+.input-container {
+  margin-bottom: 20px;
+}
+
+.success-message {
+  margin-top: 20px;
+  color: green;
+}

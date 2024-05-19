@@ -1,0 +1,12 @@
+<!-- pages/try/try.wxml -->
+<view>
+  <!-- 标题 -->
+  <view class="title">{{pageTitle}}</view>
+  <!-- 广告图片 -->
+  <image src="/images/advertisement.jpg"></image>
+  
+  <!-- 按钮 -->
+  <button class="button" bindtap="goToAppointment">体测预约</button>
+  <button class="button" bindtap="goToScore">成绩查询</button>
+  
+</view>

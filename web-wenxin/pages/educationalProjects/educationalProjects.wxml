@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="filter-bar">
+    <picker mode="selector" range="{{sortOptions}}" bindchange="onSortChange">
+      <view class="picker">
+        当前排序：{{sortOptions[selectedSortIndex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="project-list">
+    <block wx:for="{{projects}}" wx:key="id">
+      <view class="project-item" bindtap="goToDetail" data-id="{{item.id}}">
+        <text class="project-title">{{item.title}}</text>
+        <text class="project-date">{{item.date}}</text>
+      </view>
+    </block>
+  </view>
+</view>

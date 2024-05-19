@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="activity-list">
+    <block wx:for="{{activities}}" wx:key="id">
+      <view class="activity-item" bindtap="goToActivityDetail" data-id="{{item.id}}">
+        <view class="activity-info">
+          <text class="activity-name">{{item.name}}</text>0
+          <text class="activity-time">{{item.time}}</text>
+          <text class="activity-location">{{item.location}}</text>
+          <text class="activity-organizer">组织者：{{item.organizer}}</text>
+        </view>
+        <view class="activity-status {{item.status === '报名中' ? 'open' : 'closed'}}">{{item.status}}</view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,22 @@
+<!--pages/research/research.wxml-->
+<text>pages/research/research.wxml</text>
+<view class="container">
+  <view class="navbar">
+  <button class="nav-button" bindtap="navigateTo" data-url="/pages/educationalProjects/educationalProjects">教改项目</button>
+  <button class="nav-button" bindtap="navigateTo" data-url="/pages/researchProjects/researchProjects">科研项目</button>
+  <button class="nav-button" bindtap="navigateTo" data-url="/pages/industryProjects/industryProjects">产学研项目</button>
+  </view>
+  <input class="search-box" type="text" placeholder="搜索项目名称或关键词" />
+  <view class="news-section">
+    <view class="news-title">最新动态</view>
+    <view class="news-list">
+      <block wx:for="{{news}}" wx:key="unique">
+        <view class="news-item">
+          <text>{{item.title}}</text>
+          <text class="news-summary">{{item.summary}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+</view>

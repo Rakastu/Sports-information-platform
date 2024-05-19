@@ -1,0 +1,15 @@
+<!-- index.wxml -->
+<view class="container">
+  <button class="btn" bindtap="checkAppointments">查看我的预约</button>
+  <view class="appointments">
+    <block wx:if="{{appointments.length > 0}}">
+      <view class="title">我的预约信息</view>
+      <view wx:for="{{appointments}}" wx:key="index" class="appointment">
+        <view>日期：{{item.date}}，时间：{{item.time}}</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="empty">暂无预约信息</view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,18 @@
+<view class="main">
+
+<view class="title">
+  课程设置与调整
+</view>
+<view class="XX"></view>
+<view class="text">此页面待连接数据库</view>
+<view class="text">-输入课程号以进行调整/设置-</view>
+
+<view class="BAG">
+<view class="box1">
+  <input  class="check" placeholder="请输入课程号" />
+</view>
+ <button class="button" >查询</button>
+</view>
+<view class="XX"></view>
+<view class="text">- 智慧运动 - 健康随行 -</view>
+</view>

@@ -1,0 +1,35 @@
+<view class="main">
+  <view class="title">
+    教学资源
+  </view>
+  
+  <view class="XX"></view>
+    <view class="h2">个人信息</view>
+  <view>
+    <view class="imgtext">姓名：王老师</view>
+    <view class="imgtext">工号：1234567</view>
+  </view>
+
+  <view class="XX"></view>
+  <view class="h2">功能模块</view>
+<view class="BAG">  
+<navigator url="/pages/T-Teaching-seminar/Teaching-seminar">
+  <view class="box1">
+    <view class="h1">教学视频库</view>
+  </view>
+</navigator>
+<navigator url="/pages/T-Teaching-plan/Teaching-plan">
+  <view class="box1">
+    <view class="h1">教学文档共享</view>
+  </view>
+</navigator>
+<navigator url="/pages/T-Results-display/Results-display">
+  <view class="box1">
+    <view class="h1">课堂辅助工具</view>
+  </view>
+</navigator>
+</view>
+
+  <view class="XX"></view>
+  <view class="text">- 智慧运动 - 健康随行 -</view>
+</view>

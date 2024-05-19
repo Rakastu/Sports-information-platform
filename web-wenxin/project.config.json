@@ -1,7 +1,6 @@
 {
-  "appid": "wx86bdc9ca36185ef3",
   "compileType": "miniprogram",
-  "libVersion": "3.4.3",
+  "libVersion": "trial",
   "packOptions": {
     "ignore": [],
     "include": []
@@ -22,7 +21,8 @@
   },
   "condition": {},
   "editorSetting": {
-    "tabIndent": "insertSpaces",
+    "tabIndent": "auto",
     "tabSize": 2
-  }
+  },
+  "appid": "wx86bdc9ca36185ef3"
 }

@@ -1,0 +1,39 @@
+<view class="main">
+	<view class="up">
+		<image mode="aspectFill" src="/pictures/home.jpg" />
+	</view>
+<view class="down">
+		<view class="menu card-project shadow-project">
+			<view bindtap="url"  class="item">
+				<view class="item-inner">
+					<view class="img shadow">
+            <navigator url="/pages/baseball/baseball"> 
+						<image src="/pictures/baseball.png" />
+          </navigator>
+					</view>
+					<view class="title">网球</view>
+				</view>
+			</view>
+      <view bindtap="url"  class="item">
+				<view class="item-inner">
+					<view class="img shadow">
+            <navigator url="/pages/badmin/badmin"> 
+						<image src="/pictures/badmin.png" />
+          </navigator>
+					</view>
+					<view class="title">羽毛球</view>
+				</view>
+			</view>
+      <view bindtap="url"  class="item">
+				<view class="item-inner">
+					<view class="img shadow">
+            <navigator url="/pages/tennis/tennis"> 
+						<image src="/pictures/tennis.png" />
+          </navigator>
+					</view>
+					<view class="title">乒乓球</view>
+				</view>
+			</view>
+    </view>
+</view>
+</view>

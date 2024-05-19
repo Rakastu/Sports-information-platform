@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="back-btn" bindtap="navigateBack">
+  </view>
+  <view class="button" bindtap="customizeTraining">定制个性化训练方案</view>
+  <view class="button" bindtap="viewMyPlans">查看我的训练计划</view>
+  <view class="button" bindtap="viewTrainingRecords">查看比赛记录</view>
+</view>
